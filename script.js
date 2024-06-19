@@ -13,6 +13,9 @@ const startButton = document.getElementById("start");
 const pauseButton = document.getElementById("pause");
 const resetButton = document.getElementById("reset");
 const themeToggleCheckbox = document.getElementById("theme-toggle-checkbox");
+const workAlarm = document.getElementById("work-alarm");
+const breakAlarm = document.getElementById("break-alarm");
+const startSound = document.getElementById("start-sound");
 
 function updateDisplay() {
   minutesDisplay.textContent = String(minutes).padStart(2, "0");
@@ -21,6 +24,7 @@ function updateDisplay() {
 
 function startTimer() {
   if (isPaused) {
+    startSound.play();
     isPaused = false;
     intervalID = setInterval(updateTimer, 1000);
   }
@@ -41,6 +45,11 @@ function resetTimer() {
 }
 
 function switchSession() {
+  if (isWorkSession) {
+    workAlarm.play();
+  } else {
+    breakAlarm.play();
+  }
   isWorkSession = !isWorkSession;
   minutes = isWorkSession ? workMinutes : breakMinutes;
   seconds = 0;
