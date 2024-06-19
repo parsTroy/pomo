@@ -12,6 +12,7 @@ const sessionDisplay = document.querySelector(".session");
 const startButton = document.getElementById("start");
 const pauseButton = document.getElementById("pause");
 const resetButton = document.getElementById("reset");
+const themeToggleCheckbox = document.getElementById("theme-toggle-checkbox");
 
 function updateDisplay() {
   minutesDisplay.textContent = String(minutes).padStart(2, "0");
@@ -60,8 +61,13 @@ function updateTimer() {
   updateDisplay();
 }
 
+function toggleTheme() {
+  document.body.classList.toggle("dark-mode");
+}
+
 startButton.addEventListener("click", startTimer);
 pauseButton.addEventListener("click", pauseTimer);
 resetButton.addEventListener("click", resetTimer);
+themeToggleCheckbox.addEventListener("change", toggleTheme);
 
 updateDisplay();
