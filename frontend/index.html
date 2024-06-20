@@ -8,6 +8,12 @@
   </head>
   <body>
     <div class="container">
+      <div class="auth">
+        <input type="text" id="username" placeholder="Username" />
+        <input type="password" id="password" placeholder="Password" />
+        <button id="login">Login</button>
+        <button id="register">Register</button>
+      </div>
       <div class="theme-toggle">
         <label class="switch">
           <input type="checkbox" id="theme-toggle-checkbox" />
@@ -23,10 +29,14 @@
         <button id="reset">Reset</button>
       </div>
       <div class="session">Work Session</div>
+      <div class="stats">
+        <div id="experience">Experience: 0</div>
+        <div id="achievements">Achievements: None</div>
+      </div>
     </div>
-    <audio id="work-alarm" src="work-alarm.mp3"></audio>
-    <audio id="break-alarm" src="break-alarm.mp3"></audio>
-    <audio id="start-sound" src="start-sound.mp3"></audio>
+    <audio id="work-alarm" src="sounds/work-alarm.mp3"></audio>
+    <audio id="break-alarm" src="sounds/break-alarm.mp3"></audio>
+    <audio id="start-sound" src="sounds/start-sound.mp3"></audio>
     <script src="script.js"></script>
   </body>
 </html>

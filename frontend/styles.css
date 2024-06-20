@@ -1,3 +1,4 @@
+/* styles.css */
 :root {
   --bg-color: #f5f5f5;
   --text-color: #333;
@@ -26,6 +27,27 @@ body {
   box-shadow: 0 4px 8px var(--container-shadow);
 }
 
+.auth input {
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.auth button {
+  background: var(--button-bg);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.auth button:hover {
+  background: var(--button-hover-bg);
+}
+
 .timer {
   font-size: 48px;
   margin-bottom: 20px;
@@ -47,6 +69,11 @@ body {
 }
 
 .session {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.stats {
   margin-top: 20px;
   font-size: 18px;
 }
