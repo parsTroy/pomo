@@ -21,6 +21,10 @@ const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const loginButton = document.getElementById("login");
 const registerButton = document.getElementById("register");
+const loginBtn = document.getElementById("login-btn");
+const registerBtn = document.getElementById("register-btn");
+const closeAuthButton = document.getElementById("close-auth");
+const authForm = document.getElementById("auth-form");
 const experienceDisplay = document.getElementById("experience");
 const achievementsDisplay = document.getElementById("achievements");
 
@@ -100,6 +104,7 @@ async function register() {
     password: passwordInput.value,
   });
   userId = user._id;
+  authForm.style.display = "none";
 }
 
 async function login() {
@@ -110,6 +115,7 @@ async function login() {
   userId = user._id;
   experienceDisplay.textContent = `Experience: ${user.experience}`;
   fetchAchievements();
+  authForm.style.display = "none";
 }
 
 async function trackSession() {
@@ -140,5 +146,21 @@ resetButton.addEventListener("click", resetTimer);
 themeToggleCheckbox.addEventListener("change", toggleTheme);
 registerButton.addEventListener("click", register);
 loginButton.addEventListener("click", login);
+
+loginBtn.addEventListener("click", () => {
+  authForm.style.display = "block";
+  registerButton.style.display = "none";
+  loginButton.style.display = "inline-block";
+});
+
+registerBtn.addEventListener("click", () => {
+  authForm.style.display = "block";
+  loginButton.style.display = "none";
+  registerButton.style.display = "inline-block";
+});
+
+closeAuthButton.addEventListener("click", () => {
+  authForm.style.display = "none";
+});
 
 updateDisplay();

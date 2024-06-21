@@ -7,18 +7,23 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="auth">
-        <input type="text" id="username" placeholder="Username" />
-        <input type="password" id="password" placeholder="Password" />
-        <button id="login">Login</button>
-        <button id="register">Register</button>
-      </div>
+    <div class="top-bar">
+      <button id="login-btn">Login</button>
+      <button id="register-btn">Register</button>
       <div class="theme-toggle">
         <label class="switch">
           <input type="checkbox" id="theme-toggle-checkbox" />
           <span class="slider round"></span>
         </label>
+      </div>
+    </div>
+    <div class="container">
+      <div class="auth" id="auth-form" style="display: none">
+        <input type="text" id="username" placeholder="Username" />
+        <input type="password" id="password" placeholder="Password" />
+        <button id="login">Login</button>
+        <button id="register">Register</button>
+        <button id="close-auth">Close</button>
       </div>
       <div class="timer">
         <span id="minutes">25</span>:<span id="seconds">00</span>
