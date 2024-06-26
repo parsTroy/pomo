@@ -27,6 +27,19 @@ const closeAuthButton = document.getElementById("close-auth");
 const authForm = document.getElementById("auth-form");
 const experienceDisplay = document.getElementById("experience");
 const achievementsDisplay = document.getElementById("achievements");
+const profileBtn = document.getElementById("profile-btn");
+const friendsBtn = document.getElementById("friends-btn");
+const homeBtn = document.getElementById("home-btn");
+const profileForm = document.getElementById("profile-form");
+const bioInput = document.getElementById("bio");
+const avatarInput = document.getElementById("avatar");
+const profileUsername = document.getElementById("profile-username");
+const profileBio = document.getElementById("profile-bio");
+const profileAvatar = document.getElementById("profile-avatar");
+const searchFriendsInput = document.getElementById("search-friends");
+const searchBtn = document.getElementById("search-btn");
+const friendsList = document.getElementById("friends-list");
+const yourFriendsList = document.getElementById("your-friends-list");
 
 let userId = null;
 
@@ -140,12 +153,55 @@ async function fetchAchievements() {
     .join(", ")}`;
 }
 
+async function updateProfile(event) {
+  event.preventDefault();
+  const user = await apiRequest(`/profile/${userId}`, "PUT", {
+    profile: {
+      bio: bioInput.value,
+      avatar: avatarInput.value,
+    },
+  });
+  profileUsername.textContent = user.username;
+  profileBio.textContent = user.profile.bio;
+  profileAvatar.src = user.profile.avatar;
+}
+
+async function searchFriends() {
+  const friends = await apiRequest(
+    `/friends/search?username=${searchFriendsInput.value}`,
+    "GET"
+  );
+  friendsList.innerHTML = "";
+  friends.forEach((friend) => {
+    const li = document.createElement("li");
+    li.textContent = friend.username;
+    const addButton = document.createElement("button");
+    addButton.textContent = "Add Friend";
+    addButton.addEventListener("click", () => addFriend(friend._id));
+    li.appendChild(addButton);
+    friendsList.appendChild(li);
+  });
+}
+
+async function addFriend(friendId) {
+  const user = await apiRequest(`/friends/${userId}`, "POST", { friendId });
+  yourFriendsList.innerHTML = "";
+  user.friends.forEach(async (friend) => {
+    const friendUser = await apiRequest(`/profile/${friend}`, "GET");
+    const li = document.createElement("li");
+    li.textContent = friendUser.username;
+    yourFriendsList.appendChild(li);
+  });
+}
+
 startButton.addEventListener("click", startTimer);
 pauseButton.addEventListener("click", pauseTimer);
 resetButton.addEventListener("click", resetTimer);
 themeToggleCheckbox.addEventListener("change", toggleTheme);
 registerButton.addEventListener("click", register);
 loginButton.addEventListener("click", login);
+profileForm.addEventListener("submit", updateProfile);
+searchBtn.addEventListener("click", searchFriends);
 
 loginBtn.addEventListener("click", () => {
   authForm.style.display = "block";
@@ -161,6 +217,18 @@ registerBtn.addEventListener("click", () => {
 
 closeAuthButton.addEventListener("click", () => {
   authForm.style.display = "none";
+});
+
+profileBtn.addEventListener("click", () => {
+  window.location.href = "profile.html";
+});
+
+friendsBtn.addEventListener("click", () => {
+  window.location.href = "friends.html";
+});
+
+homeBtn.addEventListener("click", () => {
+  window.location.href = "index.html";
 });
 
 updateDisplay();
