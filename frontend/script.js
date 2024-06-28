@@ -1,3 +1,4 @@
+// script.js
 let workMinutes = 25;
 let breakMinutes = 5;
 let isWorkSession = true;
@@ -40,6 +41,7 @@ const searchFriendsInput = document.getElementById("search-friends");
 const searchBtn = document.getElementById("search-btn");
 const friendsList = document.getElementById("friends-list");
 const yourFriendsList = document.getElementById("your-friends-list");
+const profilePic = document.getElementById("profile-pic");
 
 let userId = null;
 
@@ -229,6 +231,10 @@ friendsBtn.addEventListener("click", () => {
 
 homeBtn.addEventListener("click", () => {
   window.location.href = "index.html";
+});
+
+profilePic.addEventListener("click", () => {
+  window.location.href = "profile.html";
 });
 
 updateDisplay();
