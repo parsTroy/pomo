@@ -239,4 +239,4 @@ profilePic.addEventListener("click", () => {
 
 updateDisplay();
 
-console.log("TEST");
+console.log("Remove this line");
