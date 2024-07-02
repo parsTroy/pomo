@@ -28,12 +28,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 40px; /* Increased padding for left and right */
   z-index: 1000;
 }
 
 .nav-link {
-  margin: 0 10px;
+  margin: 0 15px;
   text-decoration: none;
   color: var(--text-color);
   font-size: 16px;
@@ -61,8 +61,8 @@ body {
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 50px; /* Reduced width */
+  height: 28px; /* Reduced height */
 }
 
 .switch input {
@@ -80,14 +80,14 @@ body {
   bottom: 0;
   background-color: #ccc;
   transition: 0.4s;
-  border-radius: 34px;
+  border-radius: 28px;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 20px;
+  width: 20px;
   left: 4px;
   bottom: 4px;
   background-color: white;
@@ -100,7 +100,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(26px);
+  transform: translateX(22px);
 }
 
 .container {
@@ -109,7 +109,7 @@ input:checked + .slider:before {
   padding: 20px 40px;
   border-radius: 10px;
   box-shadow: 0 4px 8px var(--container-shadow);
-  margin-top: 60px; /* Adjusted for navbar height */
+  margin-top: 80px; /* Adjusted for navbar height */
 }
 
 .auth {
