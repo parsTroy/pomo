@@ -238,3 +238,4 @@ profilePic.addEventListener("click", () => {
 });
 
 updateDisplay();
+// Refresh display
